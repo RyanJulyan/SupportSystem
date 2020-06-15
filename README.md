@@ -19,10 +19,10 @@ Support system is a web based system created in the Laravel framework. Laravel t
 - Basic user authentication
 - User roles.
 - Log a support ticket by category.
--- Categories: (Sales, Accounts,  IT)
--- Capture Personal details of the person logging
--- Capture the GPS Coordinates
--- 
+  - Categories: (Sales, Accounts,  IT)
+  - Capture Personal details of the person logging
+  - Capture the GPS Coordinates
+  - 
 - Send Emails to person logging  ticket.
 - View status by ticket number
 
@@ -41,16 +41,75 @@ Support system is a web based system created in the Laravel framework. Laravel t
 - MySQL >= 5.7
 - Composer
 
-  ### [Installing Laravel](https://laravel.com/docs/7.x#installing-laravel)
+### [Installing Laravel](https://laravel.com/docs/7.x#installing-laravel)
 
 Laravel utilizes  [Composer](https://getcomposer.org/)  to manage its dependencies. So, before using Laravel, make sure you have Composer installed on your machine.
 
-#### Via Laravel Installer
+#### Installation instructions:
 
-First, download the Laravel installer using Composer:
+1. Download and install LAMP stack (Linux, Apache, MySQL, PHP):
+```
+$ sudo apt-get install software-properties-common
+$ Y
+$ sudo apt update
+$ sudo apt install curl
+$ sudo apt install apache2
+$ Y
+$ sudo apt install mysql-server
+$ Y
+$ sudo mysql_secure_installation
+$ assessment
+$ sudo mysql
+$ sudo apt install php libapache2-mod-php php-mysql
+$ sudo apt install php-cli
+$ sudo apt install php-bcmath
+$ Y
+$ sudo apt install php-ctype
+$ Y
+$ sudo apt install php-fileinfo
+$ Y
+$ sudo apt install php-json
+$ Y
+$ sudo apt install php-mbstring
+$ Y
+$ sudo apt install php-pdo
+$ Y
+$ sudo apt install php-tokenizer
+$ Y
+$ sudo apt install php-xml
+$ Y
+$ sudo curl -s https://getcomposer.org/installer | php
+$ sudo mv composer.phar /usr/local/bin/composer
+$ sudo apt install git-all
+$ Y
+```
 
-```php
-composer global require laravel/installer
+2. Check the status of the server:
+```
+$ composer
+$ sudo systemctl status apache2
+$ Q
+```
+
+3. Download the Laravel installer using Composer:
+```
+$ composer global require laravel/installer
+```
+
+4. Download and clone the Repo and install the correct requirements:
+```
+$ git clone https://github.com/RyanJulyan/SupportSystem.git
+$ cd cd SupportSystem/
+$ composer update
+$ composer install
+$ php artisan key:generate
+$ php artisan cache:clear
+$ php artisan config:clear
+$ composer dump-autoload
+$ php artisan view:clear
+$ php artisan migrate:refresh
+$ yes
+$ php artisan db:seed
 ```
 
 ## # License
