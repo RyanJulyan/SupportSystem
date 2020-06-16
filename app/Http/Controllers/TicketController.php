@@ -4,10 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class HomeController extends Controller
+use App\Ticket;
+
+use Carbon\Carbon;
+
+use Validator;
+
+class TicketController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -20,7 +27,7 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the new ticket.
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
@@ -38,7 +45,6 @@ class HomeController extends Controller
 						->join('users AS UU', 'UU.id', '=', 'T.updated_user_id')
 						->leftJoin('users AS AU', 'AU.id', '=', 'T.assigned_user_id')
                         ->where('T.created_user_id',$user_id)
-                        ->whereIn('S.name',['New', 'Active', 'Processing', 'In Progress'])
                         ->select([
                             'T.id',
                             'T.ticket_guid',
@@ -57,17 +63,24 @@ class HomeController extends Controller
                             'UU.last_name AS updated_last_name',
                         ])
                         ->paginate(10);
+
+        // dd($data);
         
-        $data->lastticket = DB::table('tickets AS T')
+        return view('tickets.tickets', ['data' => $data]);
+    }
+
+    public function index_all()
+    {
+
+		$data = collect([]);
+        
+        $data->tickets = DB::table('tickets AS T')
 						->join('categories AS C', 'C.id', '=', 'T.ticket_category_id')
 						->join('statuses AS S', 'S.id', '=', 'T.status_id')
 						->join('users AS CU', 'CU.id', '=', 'T.created_user_id')
 						->join('users AS UU', 'UU.id', '=', 'T.updated_user_id')
 						->leftJoin('users AS AU', 'AU.id', '=', 'T.assigned_user_id')
-                        ->where('T.created_user_id',$user_id)
-                        ->orderBy('T.created_at', 'desc')
-                        ->take(1)
-                        ->first([
+                        ->select([
                             'T.id',
                             'T.ticket_guid',
                             'T.subject',
@@ -83,8 +96,37 @@ class HomeController extends Controller
                             'CU.last_name AS created_last_name',
                             'UU.first_name AS updated_first_name',
                             'UU.last_name AS updated_last_name',
-                        ]);
-        // dd($data->lastticket);
-        return view('home', ['data' => $data]);
+                        ])
+                        ->paginate(10);
+
+        // dd($data);
+        
+        return view('tickets.tickets', ['data' => $data]);
     }
+    
+	public function update(Request $request)	
+	{
+        
+        $validator = Validator::make($request->all(), [
+            'status_id' => 'required',
+            'ticket_category_id' => 'required',
+        ])->validate();
+        
+        $user_id = Auth::user()->id;
+        
+        // dd($request);
+
+		DB::table('tickets AS T')
+		->where('T.id', $request->id)
+		->update([
+			'T.status_id'=>$request->status_id,
+			'T.ticket_category_id'=>$request->ticket_category_id,
+            'T.assigned_user_id'=>$request->assigned_user_id,
+            
+			'T.updated_at' => Carbon::now(),
+			'T.updated_user_id' => $user_id,
+		]);
+
+		return redirect()->back();
+	}
 }

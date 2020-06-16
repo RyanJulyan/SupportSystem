@@ -21,6 +21,14 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Auth::routes();
+// New Tickets
+Route::get('/new-ticket', 'NewTicketController@index')->name('new-ticket');
+Route::post('/new-ticket', 'NewTicketController@store')->name('post-new-ticket');
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+// Tickets
+Route::get('/tickets', 'TicketController@index')->name('tickets');
+Route::post('/ticket', 'TicketController@update')->name('update-ticket');
+Route::get('/ticket/{guid}', 'PublicTicketController@show')->name('ticket');
+
+Route::get('/all-tickets', 'TicketController@index_all')->name('all-tickets');

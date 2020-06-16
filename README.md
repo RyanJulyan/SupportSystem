@@ -22,9 +22,28 @@ Support system is a web based system created in the Laravel framework. Laravel t
   - Categories: (Sales, Accounts,  IT)
   - Capture Personal details of the person logging
   - Capture the GPS Coordinates
-  - 
-- Send Emails to person logging  ticket.
-- View status by ticket number
+    - This Has a fallback for if a user does not allow broweser to know location
+  - Ability to update the status of the ticket
+- Send Email to person logging ticket with ticket details and link to view ticket.
+- View status by ticket number anonymously
+- View status by ticket number and update status
+  - Only update status if
+    - Admin
+    - Created the ticket
+- View personally logged tickets
+  - Order tickets by:
+    - First Name
+    - Last Name
+    - Date logged
+    - Status of Ticket
+
+### Future Inhancesments:
+
+- View for managing categories
+- View for managing statuses
+- View for managing users
+- View for managing user roles
+- Abstract Addresses that are logged
 
 ## # Server Requirements
 
@@ -110,6 +129,11 @@ $ php artisan view:clear
 $ php artisan migrate:refresh
 $ yes
 $ php artisan db:seed
+```
+
+5. Run the server:
+```
+$ php artisan serve
 ```
 
 ## # License

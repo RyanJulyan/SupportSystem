@@ -10,6 +10,9 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+
+        <!-- Styles -->
         <style>
             html, body {
                 background-color: #fff;
@@ -68,7 +71,7 @@
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
-                        <a href="{{ url('/home') }}">Home</a>
+                        <a href="{{ url('/home') }}">Dashboard</a>
                     @else
                         <a href="{{ route('login') }}">Login</a>
 
@@ -81,20 +84,42 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Support System
+                </div>
+                
+                <div class="card-body">
+                    <form method="GET" action="{{ url('ticket/') }}" id="find_ticket_form">
+                        @csrf
+                        <div class="form-group row">
+                            <label for="find_ticket" class="col-md-4 col-form-label text-md-right">{{ __('Find Ticket by GUID') }}</label>
+
+                            <div class="col-md-6">
+                                <div class="input-group mb-3">
+                                    <input id="find_ticket" type="text" class="form-control" name="find_ticket" required>
+                                
+                                    <div class="input-group-prepend">
+                                        <button class="btn btn-primary" id="basic-addon1"
+                                    onclick="event.preventDefault(); setAction(); document.getElementById('find_ticket_form').submit();">Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="{{ route('new-ticket') }}">Log Tickets</a>
+                    <a href="{{ route('tickets') }}">View Tickets</a>
+                    <a href="{{ route('tickets') }}">Change Ticket Status</a>
+                    <a target="_blank" href="https://github.com/RyanJulyan/SupportSystem">GitHub</a>
                 </div>
+
             </div>
         </div>
+    <script>
+        function setAction(){
+            document.getElementById('find_ticket_form').action = document.getElementById('find_ticket_form').action + "/" + document.getElementById('find_ticket').value ;
+        }
+    </script>
     </body>
 </html>
