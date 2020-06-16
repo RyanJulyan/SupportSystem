@@ -40,3 +40,7 @@ Route::get('/animal-lovers', 'ComplexController@animallovers')->name('animal-lov
 Route::get('/children-sport-lovers', 'ComplexController@childrensportlovers')->name('children-sport-lovers');
 Route::get('/unique-interests', 'ComplexController@uniqueinterests')->name('unique-interests');
 Route::get('/more-interests', 'ComplexController@moreinterests')->name('more-interests');
+
+// File
+Route::get('/file-manipulation', 'FileController@index')->name('file-manipulation');
+Route::post('/file-manipulation', 'FileController@index')->name('file-upload');

@@ -136,7 +136,29 @@ $ php artisan db:seed
 $ php artisan serve
 ```
 
+## # URL Details:
+
 ## # Login Details:
+```
+http://localhost:8000/
+
+http://localhost:8000/file-manipulation
+
+http://localhost:8000/complex-query
+http://localhost:8000/animal-lovers
+http://localhost:8000/children-sport-lovers
+http://localhost:8000/unique-interests
+http://localhost:8000/more-interests
+
+http://localhost:8000/register
+http://localhost:8000/login
+http://localhost:8000/home
+http://localhost:8000/new-ticket
+http://localhost:8000/tickets
+http://localhost:8000/ticket/{guid}
+http://localhost:8000/all-tickets
+http://localhost:8000/all-tickets
+```
 
 ### Staff
 ```
@@ -154,6 +176,11 @@ $ php artisan serve
 ```
   email: "ryan@julyan.biz"
   password: "Ryan Julyan"
+```
+
+### Example File for File Upload
+```
+  support_system/example_file/Book1.xlsx
 ```
 
 ## # License

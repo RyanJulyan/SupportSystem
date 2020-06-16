@@ -112,6 +112,7 @@
                     <a href="{{ route('tickets') }}">View Tickets</a>
                     <a href="{{ route('tickets') }}">Change Ticket Status</a>
                     <a href="{{ route('complex-query') }}">Complex Query</a>
+                    <a href="{{ route('file-manipulation') }}">File Manipulation</a>
                     <a target="_blank" href="https://github.com/RyanJulyan/SupportSystem">GitHub</a>
                 </div>
 
