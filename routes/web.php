@@ -32,3 +32,11 @@ Route::post('/ticket', 'TicketController@update')->name('update-ticket');
 Route::get('/ticket/{guid}', 'PublicTicketController@show')->name('ticket');
 
 Route::get('/all-tickets', 'TicketController@index_all')->name('all-tickets');
+
+
+// Compex
+Route::get('/complex-query', 'ComplexController@index')->name('complex-query');
+Route::get('/animal-lovers', 'ComplexController@animallovers')->name('animal-lovers');
+Route::get('/children-sport-lovers', 'ComplexController@childrensportlovers')->name('children-sport-lovers');
+Route::get('/unique-interests', 'ComplexController@uniqueinterests')->name('unique-interests');
+Route::get('/more-interests', 'ComplexController@moreinterests')->name('more-interests');

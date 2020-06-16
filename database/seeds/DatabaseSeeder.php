@@ -17,6 +17,11 @@ class DatabaseSeeder extends Seeder
             UsersTableSeeder::class,
             StatusesTableSeeder::class,
             CategoriesTableSeeder::class,
+            PersonalDetailsTableSeeder::class,
+            InterestsTableSeeder::class,
+            InterestLinksTableSeeder::class,
+            DocumentsTableSeeder::class,
+            DocumentLinksTableSeeder::class,
         ]);
     }
 }

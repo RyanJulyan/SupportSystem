@@ -16,9 +16,6 @@
                         <table class="table table-hover DataTable">
                             <thead>
                             <tr>
-                            <!-- id	PO_Number	invoice_Number	order_date	company_id	user_id	address_id	created_user_id	updated_by_user_id	created_at	updated_at -->
-
-                                <!-- <th>ID</th> -->
                                 <th>GUID</th>
                                 <th>Category</th>
                                 <th>First Name</th>
