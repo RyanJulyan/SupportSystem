@@ -136,6 +136,26 @@ $ php artisan db:seed
 $ php artisan serve
 ```
 
+## # Login Details:
+
+### Staff
+```
+  email: "mwalstra@cgn.co.za"
+  password: "Matthew Walstra"
+
+  email: "Generic@Support.biz"
+  password: "Generic Support"
+
+  email: "Generic2@Support.biz"
+  password: "Generic 2 Support 2"
+```
+
+### User
+```
+  email: "ryan@julyan.biz"
+  password: "Ryan Julyan"
+```
+
 ## # License
 
 The Laravel framework and the application “Support System” are both open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
